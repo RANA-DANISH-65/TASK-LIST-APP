@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color1: #1E1E2F; /* Primary color */
+    --color2: #FF5C5C; /* Accent color */
+    --color3: #2A2E36; /* Main container color */
+    --color4: #E6E6E6; /* Text color */
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--color1) 0%, var(--color3) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    width: 50%;
+    max-width: 100%;
+    background-color: var(--color3);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.statics {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+}
+
+.intro {
+    padding: 20px;
+}
+
+.intro h1 {
+    color: var(--color4);
+    margin-bottom: 5px;
+    font-size: 2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .15em solid #fff;
+    animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #fff }
+}
+
+.intro p {
+    color: var(--color4);
+    font-size: 1.2rem;
+}
+
+@keyframes flip {
+    0% {
+        transform: perspective(600px) rotateY(0deg);
+    }
+    50% {
+        transform: perspective(600px) rotateY(180deg);
+    }
+    100% {
+        transform: perspective(600px) rotateY(360deg);
+    }
+}
+
+.animate {
+    animation: flip 0.6s ease-in;
+}
+
+.states {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    background-color: var(--color2);
+    color: var(--color4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease-in;
+}
+
+.input-task {
+    width: 100%;
+    padding: 10px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-task input {
+    width: 85%;
+    padding: 10px;
+    font-size: 1.12rem;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    margin-right: 10px;
+    color: var(--color4);
+    background-color: var(--color3);
+}
+
+.input-task i {
+    font-size: 2rem;
+    text-align: center;
+    padding: 5px;
+    background-color: var(--color2);
+    border-radius: 50%;
+    color: var(--color4);
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pending-tasks {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: var(--color3);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease-in-out;
+}
+
+.task {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--color2);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background-color: var(--color3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease-in-out;
+}
+
+.task input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 2px solid var(--color2);
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+}
+
+.task input[type="checkbox"]::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background-color: var(--color2);
+    border-radius: 2px;
+    transform: scale(0);
+    transition: transform 0.2s ease-in-out;
+}
+
+.task input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.task p {
+    width: 100%;
+    font-size: 1.3rem;
+    color: var(--color4);
+    transition: color 0.2s ease-in-out;
+}
+
+.task i {
+    font-size: 1.2rem;
+    color: var(--color4);
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.task i:hover {
+    color: var(--color2);
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #999;
+    opacity: 0.6;
+    padding: 3px;
+    
+}
+
+@media (max-width: 760px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 15px;
+        box-shadow: none;
+    }
+
+    .intro h1 {
+        font-size: 1.5rem;
+        border-right: .1em solid #fff;
+    }
+
+    .intro p {
+        font-size: 1rem;
+    }
+
+    .states {
+        width: 80px;
+        height: 80px;
+        font-size: 1.5rem;
+    }
+
+    .input-task input {
+        font-size: 1rem;
+    }
+
+    .input-task i {
+        font-size: 1.5rem;
+    }
+
+    .task p {
+        font-size: 1.1rem;
+    }
+
+    .task i {
+        font-size: 1rem;
+    }
+}
+@media (max-width: 460px){
+    .statics{
+        display: flex;
+        flex-direction: column;
+    }
+    .states{
+    width: 120px;
+    height: 120px;
+    margin-top: 20px ;
+    }
+}
